@@ -1,5 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
+const rockButton = document.querySelector('.js-rock-button');
+const scissorsButton = document.querySelector('.js-scissors-button');
+const paperButton = document.querySelector('.js-paper-button');
+const result = document.querySelector('.js-results')
 
 
 function getComputerChoice(){
@@ -13,63 +17,61 @@ function getComputerChoice(){
   }
 }
 
-function getHumanChoice(){
-  let humanChoice = prompt("Choose an option");
-  return humanChoice;
-}
-
 function displayScore(){
-  console.log(`Score => You: ${humanScore}, Computer: ${computerScore}`);
+  result.innerHTML = `Score => You: ${humanScore}, Computer: ${computerScore}`;
 }
 
 function playRound(computerChoice, humanChoice){
   computerChoice = getComputerChoice();
-  humanChoice = getHumanChoice();
   humanChoice = humanChoice.toLowerCase();
 
   if (humanChoice === 'rock'){
     if(computerChoice === 'Rock'){
-      console.log ("It's a tie!");
-      displayScore();
+      result.innerHTML = "It's a tie!";
     }else if(computerChoice === 'Paper'){
-      console.log("You lose!");
+      result.innerHTML = "You lose!";
       computerScore ++;
-      displayScore();
     }else{
-      console.log("You win!")
+      result.innerHTML = "You win!";
       humanScore++;
-      displayScore();
     }
   }
   if (humanChoice === 'paper'){
     if(computerChoice === 'Paper'){
-      console.log ("It's a tie!");
-      displayScore();
+      result.innerHTML = "It's a tie!";
     }else if(computerChoice === 'Scissors'){
-      console.log("You lose!");
+      result.innerHTML = "You lose!";
       computerScore ++;
-      displayScore();
     }else{
-      console.log("You win!")
+      result.innerHTML = "You win!";
       humanScore++;
-      displayScore();
     }
   }
   if (humanChoice === 'scissors'){
     if(computerChoice === 'Scissors'){
-      console.log ("It's a tie!");
-      displayScore();
+      result.innerHTML = "It's a tie!";
     }else if(computerChoice === 'Rock'){
-      console.log("You lose!");
+      result.innerHTML = "You lose!";
       computerScore ++;
-      displayScore();
     }else{
-      console.log("You win!")
+      result.innerHTML = "You win!";
       humanScore++;
-      displayScore();
     }
   }
 }
-for (let i = 0; i < 5; i++){
-  playRound();
-}
+
+rockButton.addEventListener('click', (computerChoice, humanChoice) => {
+  humanChoice = 'Rock';
+  playRound(computerChoice, 'Rock');
+  displayScore();
+})
+scissorsButton.addEventListener('click', (computerChoice, humanChoice) => {
+  humanChoice = 'Scissors';
+  playRound(computerChoice, 'Scissors');
+  displayScore();
+})
+paperButton.addEventListener('click', (computerChoice, humanChoice) => {
+  humanChoice = 'Paper';
+  playRound(computerChoice, 'Paper');
+  displayScore();
+})
