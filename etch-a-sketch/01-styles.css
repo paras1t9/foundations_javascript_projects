@@ -1,0 +1,20 @@
+.container{
+  align-items: center;
+  justify-self: center;
+  margin: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 640px; 
+  height: 640px;
+  border: 1px solid #000000;
+}
+.container-cell{
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+}
+.button-container{
+  display: flex;
+  justify-content: center;
+  color: rgb(rgb(83, 29, 29), rgb(39, 82, 39), blue);
+}
